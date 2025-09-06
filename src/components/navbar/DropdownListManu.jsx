@@ -25,7 +25,7 @@ const DropdownListManu = () => {
 </Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuLabel>My Account.</DropdownMenuLabel>
     <DropdownMenuSeparator />
 
     {
