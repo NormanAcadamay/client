@@ -1,0 +1,37 @@
+// refce
+import Layout from "@/layouts/layout";
+import LayoutAdmin from "@/layouts/LayoutAdmin";
+import About from "@/pages/About";
+import Dashboard from "@/pages/admin/Dashboard";
+import Mannge from "@/pages/admin/Mannge";
+import Notfound from "@/pages/admin/Notfound";
+import Home from "@/pages/Home";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router";
+
+
+function AppRoutes() {
+  return (
+     <BrowserRouter>
+    <Routes>
+        {/* Public */}
+        <Route element={<Layout/>} >
+        <Route path="/" element={<Home/>} />
+        <Route path="about" element={<About/>} />
+        </Route>
+
+        {/* Private */}
+        <Route path="admin" element={<LayoutAdmin/>}>
+         
+        
+           
+            <Route index element={<Dashboard/>} />
+            <Route path="manage" element={<Mannge/>} />
+        </Route>
+        <Route path="*" element={<Notfound/>} />
+    </Routes>
+  </BrowserRouter>
+  
+  )
+}
+
+export default AppRoutes
