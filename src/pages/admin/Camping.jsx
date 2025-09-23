@@ -8,10 +8,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { campingSchema } from "@/utils/schemas";
 import Buttons from "@/components/form/Buttons";
-// import { resolve } from "path";
+import CategoryInput from "@/components/form/CategoryInput";
+
 
 const Camping = () => {
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState , setValue } = useForm({
     resolver: zodResolver(campingSchema),
   });
 
@@ -55,6 +56,14 @@ const Camping = () => {
               placeholder="Input Your Description"
               errors={errors}
             />
+
+            <CategoryInput 
+            name='category' 
+            register={register} 
+            setValue={setValue} 
+            
+            />
+
           </div>
           <Buttons
             text="create camping"
@@ -63,6 +72,9 @@ const Camping = () => {
           />
         </form>
       </div>
+
+      map
+       
     </section>
   );
 };
