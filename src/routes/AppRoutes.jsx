@@ -7,6 +7,8 @@ import Dashboard from "@/pages/admin/Dashboard";
 import Mannge from "@/pages/admin/Mannge";
 import Notfound from "@/pages/admin/Notfound";
 import Home from "@/pages/Home";
+import Profile from "@/pages/user/Profile";
+
 import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 
 
@@ -20,7 +22,12 @@ function AppRoutes() {
         <Route path="about" element={<About/>} />
         </Route>
 
-        {/* Private */}
+        {/* Private User */}
+        <Route path="user" element={<Layout/>} >
+        <Route path="profile" element={<Profile/>} />
+        </Route>
+
+        {/* Private Admin*/}
         <Route path="admin" element={<LayoutAdmin/>}>
          
         
