@@ -8,3 +8,13 @@ export const campingSchema = z.object({
   lat: z.coerce.number(),
   lng: z.coerce.number()
 });
+export const profileSchema = z.object({
+  firstname: z.string()
+  .min(2, "first name must be fore than 2 charactor")
+  .max(30,"first name must be less than 30 charactor"),
+  lastname: z.string()
+  .min(2, "last name must be fore than 2 charactor")
+  .max(30,"last name must be less than 30 charactor"),
+  
+ 
+});

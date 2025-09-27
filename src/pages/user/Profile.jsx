@@ -4,26 +4,36 @@ import FormInputs from "@/components/form/FormInputs";
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { profileSchema } from "@/utils/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createProfile } from "@/api/profile";
+
+// clerk
+import { useAuth } from "@clerk/clerk-react";
 
 const Profile = () => {
   // javascript
-  const { register, handleSubmit, formState /*setValue*/ } = useForm();
+  // clerk
+  const { getToken, userId } = useAuth();
+
+  const { register, handleSubmit, formState /*setValue*/ } = useForm({
+    resolver: zodResolver(profileSchema),
+  });
   const { errors, isSubmitting } = formState;
   const jukkruSubmit = async (data) => {
     // code body
-    // test
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    const token = await getToken();
+    createProfile(token, data)
+    .then((res)=>{
+      console.log(res);
 
-    console.log(data);
-    await axios
-      .post("http://localhost:5001/api/profile", data)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log("roitai err", err.response.data.message);
-      });
+    })
+    .catch((err)=>{
+      console.log(err);
+
+    })
   };
+
   return (
     <section>
       <h1 className="capitalize text-2xl font-semibold mb-4">create profile</h1>
